@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_to_know/components/background_container.dart';
+import 'package:get_to_know/provider/artist_provider.dart';
+import 'package:get_to_know/screens/albums_screen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-
   final _searchKey = GlobalKey<FormState>();
 
   @override
@@ -38,14 +40,22 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if (value == null) {
                           return 'Please fill the field';
                         }
                         return null;
                       },
                       controller: _searchController,
                       onFieldSubmitted: (value) {
-                        _searchController.text = value;
+                        _searchController.text = value.trim();
+                        Provider.of<ArtistProvider>(context, listen: false)
+                            .searchArtist(_searchController.text);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AlbumsScreen(),
+                          ),
+                        );
                       },
                     ),
                   ),

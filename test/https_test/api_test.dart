@@ -17,8 +17,7 @@ void main() {
     'Search for artist should return the ID',
     () async {
       final SearchWebClient search = await SearchWebClient.createAsync();
-      await search.lookForArtistId('Arctic Monkeys');
-      expect(search.artistId, isNotNull);
+      expect(await search.lookForArtistInfo('Arctic Monkeys'), isNotNull);
     },
   );
 

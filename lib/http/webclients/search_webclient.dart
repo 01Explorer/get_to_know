@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 
 class SearchWebClient {
   String? accessToken;
-  String? artistId;
+  // String? artistId;
   List? albums;
 
   static Future<SearchWebClient> createAsync() async {
@@ -14,8 +14,8 @@ class SearchWebClient {
     return search;
   }
 
-  Future lookForArtistId(String searchTerm) async {
-    // Get Artist ID
+  Future lookForArtistInfo(String? searchTerm) async {
+    // Get Artist Info
     final Response responseId = await client.get(
       searchUrl,
       headers: {
@@ -24,7 +24,7 @@ class SearchWebClient {
       },
       params: {'q': searchTerm, 'type': 'artist'},
     );
-    artistId = jsonDecode(responseId.body)['artists']['items'][0]['id'];
+    return jsonDecode(responseId.body);
   }
 
   Future lookForAlbums(String? artistId) async {
