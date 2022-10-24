@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_to_know/components/background_container.dart';
-import 'package:get_to_know/provider/artist_provider.dart';
+import 'package:get_to_know/locator.dart';
+import 'package:get_to_know/controllers/artist_controller.dart';
 import 'package:get_to_know/screens/albums_screen.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController _searchController = TextEditingController();
+    final _artistController = locator.get<ArtistController>();
     return Scaffold(
       body: BackgroundContainer(ClipRRect(
         child: Center(
@@ -48,8 +49,7 @@ class HomeScreen extends StatelessWidget {
                       controller: _searchController,
                       onFieldSubmitted: (value) {
                         _searchController.text = value.trim();
-                        Provider.of<ArtistProvider>(context, listen: false)
-                            .searchArtist(_searchController.text);
+                        _artistController.setArtistName(_searchController.text);
                         Navigator.push(
                           context,
                           MaterialPageRoute(

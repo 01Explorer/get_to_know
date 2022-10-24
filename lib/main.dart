@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get_to_know/provider/artist_provider.dart';
+import 'package:get_to_know/locator.dart';
 import 'package:get_to_know/screens/home_screen.dart';
 import 'package:get_to_know/themes/my_theme.dart';
-import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: (context) => ArtistProvider(),
-      )
-    ],
-    child: const MyApp(),
-  ));
+  setup();
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {

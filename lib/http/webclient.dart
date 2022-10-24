@@ -8,6 +8,7 @@ final InterceptedClient client = InterceptedClient.build(
 var initialURL = Uri.https('accounts.spotify.com', '/api/token');
 var searchUrl = Uri.https('api.spotify.com', '/v1/search');
 var artistUrl = Uri.https('api.spotify.com', '/v1/artists');
+var albumsUrl = Uri.https('api.spotify.com', '/v1/albums');
 
 const String _clientID = '321e004aaa6a49bf9fc9677060b24fc4';
 const String _clientSecret = 'e1b7c00bc2f14f50814f6b4184242530';
