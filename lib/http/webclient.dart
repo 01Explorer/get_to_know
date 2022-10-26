@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http_interceptor/http_interceptor.dart';
 import 'package:http/http.dart';
 
@@ -20,5 +21,8 @@ Future<String> getAccess() async {
     body:
         'grant_type=client_credentials&client_id=$_clientID&client_secret=$_clientSecret',
   );
-  return jsonDecode(response.body)['access_token'];
+  if (response.statusCode == 200) {
+    return jsonDecode(response.body)['access_token'];
+  }
+  throw const HttpException('Unkown Error');
 }

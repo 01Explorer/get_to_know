@@ -77,6 +77,16 @@ class SearchWebClient {
       LinkedHashMap<String, dynamic> responseTracks) {
     Map<String, dynamic> stringMap = responseTracks.cast<String, dynamic>();
     List<dynamic> tracks = stringMap['items'];
-    return tracks.map((dynamic json) => Track.fromJson(json)).toList();
+    return tracks
+        .map((dynamic json) => Track.fromJson(json, getTrackArtists(json)))
+        .toList();
+  }
+
+  List<String> getTrackArtists(Map<String, dynamic> response) {
+    List<String> artists = [];
+    for (var element in response['artists']) {
+      artists.add(element['name']);
+    }
+    return artists;
   }
 }
