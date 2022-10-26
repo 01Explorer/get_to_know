@@ -14,6 +14,5 @@ class ArtistController extends ChangeNotifier {
 
   setArtistName(String text) {
     artistName = text;
-    notifyListeners();
   }
 }
