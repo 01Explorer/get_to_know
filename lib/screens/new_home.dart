@@ -1,42 +1,20 @@
-import 'dart:collection';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get_to_know/http/webclients/search_webclient.dart';
+import 'package:get_to_know/controllers/home_controller.dart';
 import 'package:get_to_know/locator.dart';
-import 'package:get_to_know/models/album.dart';
 import 'package:get_to_know/screens/artist_screen.dart';
 
-import '../models/artist.dart';
-
 class NewHome extends StatefulWidget {
-  NewHome({Key? key}) : super(key: key);
+  const NewHome({Key? key}) : super(key: key);
 
   @override
   State<NewHome> createState() => _NewHomeState();
 }
 
 class _NewHomeState extends State<NewHome> {
-  List<Album> _itemsMusics = [];
-  List<Artist> _itemsArtists = [];
-
-  Future<void> readJson() async {
-    final getInst = locator.get<SearchWebClient>();
-    final String responseMusic =
-        await rootBundle.loadString('assets/home_data.json');
-    final String responseArtists =
-        await rootBundle.loadString('assets/home_artists_data.json');
-    setState(() {
-      _itemsMusics =
-          getInst.parseAlbumResponse(jsonDecode(responseMusic)["albums"]);
-      _itemsArtists = getInst.parseArtistsResponse(jsonDecode(responseArtists));
-    });
-  }
-
+  final HomeController _controller = locator.get<HomeController>();
   @override
   Widget build(BuildContext context) {
-    readJson();
+    _controller.readJson();
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -97,7 +75,7 @@ class _NewHomeState extends State<NewHome> {
                 height: 220,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: _itemsMusics.length,
+                  itemCount: _controller.itemsMusics.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
@@ -112,14 +90,14 @@ class _NewHomeState extends State<NewHome> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
                                   image: DecorationImage(
-                                    image: NetworkImage(
-                                        _itemsMusics[index].imagePath!),
+                                    image: NetworkImage(_controller
+                                        .itemsMusics[index].imagePath!),
                                   )),
                             ),
                             Padding(
                               padding: EdgeInsets.only(top: 8),
                               child: Text(
-                                _itemsMusics[index].name!,
+                                _controller.itemsMusics[index].name!,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: 14,
@@ -128,7 +106,7 @@ class _NewHomeState extends State<NewHome> {
                               ),
                             ),
                             Text(
-                              _itemsMusics[index].artist!,
+                              _controller.itemsMusics[index].artist!,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: 12,
@@ -168,7 +146,7 @@ class _NewHomeState extends State<NewHome> {
                 height: 200,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: _itemsArtists.length,
+                  itemCount: _controller.itemsArtists.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
@@ -178,7 +156,8 @@ class _NewHomeState extends State<NewHome> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => ArtistScreen(
-                                  selectedArtist: _itemsArtists[index]),
+                                  selectedArtist:
+                                      _controller.itemsArtists[index]),
                             )),
                         child: SizedBox(
                           width: 110,
@@ -194,8 +173,8 @@ class _NewHomeState extends State<NewHome> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
-                                          image: NetworkImage(
-                                              _itemsArtists[index].imagePath!),
+                                          image: NetworkImage(_controller
+                                              .itemsArtists[index].imagePath!),
                                         ),
                                       ),
                                     ),
@@ -224,7 +203,7 @@ class _NewHomeState extends State<NewHome> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
                                 child: Text(
-                                  _itemsArtists[index].name!,
+                                  _controller.itemsArtists[index].name!,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 14,
