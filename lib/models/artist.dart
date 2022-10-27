@@ -25,4 +25,15 @@ class Artist {
       popularity: response['artists']['items'][0]['popularity'],
     );
   }
+
+  factory Artist.fromLocalJson(Map<String, dynamic> response) {
+    return Artist(
+      name: response['name'],
+      spotifyId: response['id'],
+      followers: response['followers']['total'],
+      genres: response['genres'],
+      imagePath: response['images'][0]['url'],
+      popularity: response['popularity'],
+    );
+  }
 }
