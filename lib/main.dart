@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_to_know/http/webclients/search_webclient.dart';
 import 'package:get_to_know/locator.dart';
-import 'package:get_to_know/screens/artist_screen.dart';
-import 'package:get_to_know/screens/home_screen.dart';
 import 'package:get_to_know/themes/my_theme.dart';
 
 import 'screens/new_home.dart';
