@@ -9,7 +9,7 @@ ThemeData goodLooking = ThemeData(
   textTheme: const TextTheme(
     displaySmall: TextStyle(
       fontSize: 40,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
     bodyLarge: TextStyle(
