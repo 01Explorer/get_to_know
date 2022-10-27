@@ -1,0 +1,270 @@
+{
+    "items":[
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ"
+            },
+            "followers": {
+                "href": null,
+                "total": 51262972
+            },
+            "genres": [
+                "canadian contemporary r&b",
+                "canadian pop",
+                "pop"
+            ],
+            "href": "https://api.spotify.com/v1/artists/1Xyo4u8uXC1ZmMpatF05PJ",
+            "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5ebb5f9e28219c169fd4b9e8379",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab67616100005174b5f9e28219c169fd4b9e8379",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f178b5f9e28219c169fd4b9e8379",
+                    "width": 160
+                }
+            ],
+            "name": "The Weeknd",
+            "popularity": 94,
+            "type": "artist",
+            "uri": "spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+            },
+            "followers": {
+                "href": null,
+                "total": 16502613
+            },
+            "genres": [
+                "garage rock",
+                "modern rock",
+                "permanent wave",
+                "rock",
+                "sheffield indie"
+            ],
+            "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+            "id": "7Ln80lUS6He07XvHI8qqHH",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5eb7da39dea0a72f581535fb11f",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab676161000051747da39dea0a72f581535fb11f",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f1787da39dea0a72f581535fb11f",
+                    "width": 160
+                }
+            ],
+            "name": "Arctic Monkeys",
+            "popularity": 89,
+            "type": "artist",
+            "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/7rkW85dBwwrJtlHRDkJDAC"
+            },
+            "followers": {
+                "href": null,
+                "total": 3113214
+            },
+            "genres": [
+                "canadian hip hop",
+                "canadian trap",
+                "hip hop",
+                "melodic rap",
+                "rap",
+                "toronto rap",
+                "trap"
+            ],
+            "href": "https://api.spotify.com/v1/artists/7rkW85dBwwrJtlHRDkJDAC",
+            "id": "7rkW85dBwwrJtlHRDkJDAC",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5ebf276b6e4b25bb6fb7b942ab2",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab67616100005174f276b6e4b25bb6fb7b942ab2",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f178f276b6e4b25bb6fb7b942ab2",
+                    "width": 160
+                }
+            ],
+            "name": "NAV",
+            "popularity": 78,
+            "type": "artist",
+            "uri": "spotify:artist:7rkW85dBwwrJtlHRDkJDAC"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/246dkjvS1zLTtiykXe5h60"
+            },
+            "followers": {
+                "href": null,
+                "total": 38493402
+            },
+            "genres": [
+                "dfw rap",
+                "melodic rap",
+                "rap"
+            ],
+            "href": "https://api.spotify.com/v1/artists/246dkjvS1zLTtiykXe5h60",
+            "id": "246dkjvS1zLTtiykXe5h60",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5ebb894ef9fa437b0389c5567cc",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab67616100005174b894ef9fa437b0389c5567cc",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f178b894ef9fa437b0389c5567cc",
+                    "width": 160
+                }
+            ],
+            "name": "Post Malone",
+            "popularity": 89,
+            "type": "artist",
+            "uri": "spotify:artist:246dkjvS1zLTtiykXe5h60"
+        },
+        {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02"
+            },
+            "followers": {
+                "href": null,
+                "total": 60707457
+            },
+            "genres": [
+                "pop"
+            ],
+            "href": "https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02",
+            "id": "06HL4z0CvFAxyc27GXpf02",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5eb5a00969a4698c3132a15fbb0",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab676161000051745a00969a4698c3132a15fbb0",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f1785a00969a4698c3132a15fbb0",
+                    "width": 160
+                }
+            ],
+            "name": "Taylor Swift",
+            "popularity": 99,
+            "type": "artist",
+            "uri": "spotify:artist:06HL4z0CvFAxyc27GXpf02"
+        },{
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/3Nrfpe0tUJi4K4DXYWgMUX"
+            },
+            "followers": {
+                "href": null,
+                "total": 56234816
+            },
+            "genres": [
+                "k-pop",
+                "k-pop boy group"
+            ],
+            "href": "https://api.spotify.com/v1/artists/3Nrfpe0tUJi4K4DXYWgMUX",
+            "id": "3Nrfpe0tUJi4K4DXYWgMUX",
+            "images": [
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/ab6761610000e5eb5704a64f34fe29ff73ab56bb",
+                    "width": 640
+                },
+                {
+                    "height": 320,
+                    "url": "https://i.scdn.co/image/ab676161000051745704a64f34fe29ff73ab56bb",
+                    "width": 320
+                },
+                {
+                    "height": 160,
+                    "url": "https://i.scdn.co/image/ab6761610000f1785704a64f34fe29ff73ab56bb",
+                    "width": 160
+                }
+            ],
+            "name": "BTS",
+            "popularity": 92,
+            "type": "artist",
+            "uri": "spotify:artist:3Nrfpe0tUJi4K4DXYWgMUX"
+        },{
+            "external_urls": {
+                "spotify": "https://open.spotify.com/artist/4AK6F7OLvEQ5QYCBNiQWHq"
+            },
+            "followers": {
+                "href": null,
+                "total": 27779340
+            },
+            "genres": [
+                "boy band",
+                "pop",
+                "post-teen pop",
+                "talent show"
+            ],
+            "href": "https://api.spotify.com/v1/artists/4AK6F7OLvEQ5QYCBNiQWHq",
+            "id": "4AK6F7OLvEQ5QYCBNiQWHq",
+            "images": [
+                {
+                    "height": 1000,
+                    "url": "https://i.scdn.co/image/5bb443424a1ad71603c43d67f5af1a04da6bb3c8",
+                    "width": 1000
+                },
+                {
+                    "height": 640,
+                    "url": "https://i.scdn.co/image/289c7f686f5b78ceeb224453cf9a15697a678a79",
+                    "width": 640
+                },
+                {
+                    "height": 200,
+                    "url": "https://i.scdn.co/image/45741ba38b51130bb96e00c0e24d17ba311a9293",
+                    "width": 200
+                },
+                {
+                    "height": 64,
+                    "url": "https://i.scdn.co/image/6c89c662ad0ab75bc2af9a3ae2b16f811daced50",
+                    "width": 64
+                }
+            ],
+            "name": "One Direction",
+            "popularity": 85,
+            "type": "artist",
+            "uri": "spotify:artist:4AK6F7OLvEQ5QYCBNiQWHq"
+        }
+    ]
+}
