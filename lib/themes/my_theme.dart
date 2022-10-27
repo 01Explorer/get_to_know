@@ -12,12 +12,18 @@ ThemeData goodLooking = ThemeData(
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
-    labelLarge: TextStyle(
-      fontSize: 24,
-    ),
-    labelMedium: TextStyle(
-      fontSize: 16,
+    bodyLarge: TextStyle(
+      fontSize: 18,
       fontWeight: FontWeight.w500,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+    ),
+    bodySmall: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: ThemeColors.alternativeFontColor,
     ),
   ),
 );
