@@ -6,15 +6,11 @@ import 'package:get_to_know/components/standard_bottom_bar.dart';
 import 'package:get_to_know/controllers/home_controller.dart';
 import 'package:get_to_know/locator.dart';
 
-class NewHome extends StatefulWidget {
-  const NewHome({Key? key}) : super(key: key);
+class NewHome extends StatelessWidget {
+  NewHome({Key? key}) : super(key: key);
 
-  @override
-  State<NewHome> createState() => _NewHomeState();
-}
-
-class _NewHomeState extends State<NewHome> {
   final HomeController _controller = locator.get<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     _controller.readJson();

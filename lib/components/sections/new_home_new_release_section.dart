@@ -8,6 +8,7 @@ class NewReleasesSection extends StatelessWidget {
     super.key,
     required this.title,
   });
+
   @override
   Widget build(BuildContext context) {
     return Column(
