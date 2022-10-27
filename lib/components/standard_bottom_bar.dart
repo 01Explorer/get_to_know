@@ -15,6 +15,7 @@ class StandardBottomBar extends StatelessWidget {
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
       ],
       selectedItemColor: Colors.white,
+      showUnselectedLabels: true,
     );
   }
 }
