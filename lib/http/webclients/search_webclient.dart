@@ -12,6 +12,10 @@ class SearchWebClient {
   // String? artistId;
   List? albums;
 
+  Future<void> getToken() async {
+    accessToken = await getAccess();
+  }
+
   static Future<SearchWebClient> createAsync() async {
     SearchWebClient search = SearchWebClient();
     search.accessToken = await getAccess();
@@ -54,9 +58,26 @@ class SearchWebClient {
     return parseTracksResponse(jsonDecode(responseTracks.body));
   }
 
+  Future<Map<Album, Track>> lookForArtistTopTracks(String? artistId) async {
+    final http.Response responseTracks =
+        await client.get(setArtistTopTracksUrl(artistId), headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $accessToken'
+    }, params: {
+      'market': 'BR',
+    });
+    return parseArtistTopTracksResponse(jsonDecode(responseTracks.body));
+  }
+
   Uri setArtistUrl(String? artistId) {
     String initial = artistUrl.toString();
     String newUrl = '$initial/$artistId/albums/';
+    return Uri.parse(newUrl);
+  }
+
+  Uri setArtistTopTracksUrl(String? artistId) {
+    String initial = artistUrl.toString();
+    String newUrl = '$initial/$artistId/top-tracks/';
     return Uri.parse(newUrl);
   }
 
@@ -80,6 +101,26 @@ class SearchWebClient {
     return tracks
         .map((dynamic json) => Track.fromJson(json, getTrackArtists(json)))
         .toList();
+  }
+
+  Map<Album, Track> parseArtistTopTracksResponse(
+      LinkedHashMap<String, dynamic> responseTracks) {
+    Map<String, dynamic> stringMap = responseTracks.cast<String, dynamic>();
+    List<dynamic> tracks = stringMap['tracks'];
+    Map<Album, Track> mapReturn = Map<Album, Track>.fromIterable(
+      tracks,
+      key: (element) => Album.fromJson(element['album']),
+      value: (element) => Track.fromJson(element, getTrackArtists(element)),
+    );
+    print(mapReturn.toString());
+    return mapReturn;
+  }
+
+  List<Artist> parseArtistsResponse(
+      LinkedHashMap<String, dynamic> responseTracks) {
+    Map<String, dynamic> stringMap = responseTracks.cast<String, dynamic>();
+    List<dynamic> artists = stringMap['items'];
+    return artists.map((dynamic json) => Artist.fromLocalJson(json)).toList();
   }
 
   List<String> getTrackArtists(Map<String, dynamic> response) {
