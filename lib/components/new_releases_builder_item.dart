@@ -39,6 +39,8 @@ class NewReleasesBuilderItem extends StatelessWidget {
                     image: DecorationImage(
                       image: NetworkImage(
                           _controller.itemsMusics[index].imagePath!),
+                      onError: (exception, stackTrace) =>
+                          const AssetImage('assets/images/standard_disc.png'),
                     )),
               ),
               Padding(
