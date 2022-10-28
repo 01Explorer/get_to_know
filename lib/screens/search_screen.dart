@@ -16,7 +16,7 @@ import 'package:get_to_know/screens/loading.dart';
 import 'package:get_to_know/screens/tracks_screen.dart';
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -27,12 +27,12 @@ class _SearchScreenState extends State<SearchScreen> {
 
   final String message = 'What are you looking for ?';
 
-  final SearchController _controller = locator.get<SearchController>();
+  final SearchController _searchController = locator.get<SearchController>();
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
+    _searchController.addListener(() {
       setState(() {});
     });
   }
@@ -61,18 +61,18 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: Form(
                     key: _searchKey,
                     child: InitialSearchFormField(
-                      _controller.options[_controller.tapped],
-                      _controller.hintText[_controller.tapped],
-                      controller: _controller,
+                      _searchController.options[_searchController.tapped],
+                      _searchController.hintText[_searchController.tapped],
+                      searchController: _searchController,
                     ),
                   ),
                 ),
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: _controller.toBeBuilt.length,
+                  itemCount: _searchController.toBeBuilt.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final building = _controller.toBeBuilt;
+                    final building = _searchController.toBeBuilt;
                     switch (building.runtimeType) {
                       case List<Artist>:
                         return InkWell(

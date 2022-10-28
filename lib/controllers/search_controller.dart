@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_to_know/components/response_dialog.dart';
 import 'package:get_to_know/http/webclients/search_webclient.dart';
 import 'package:get_to_know/locator.dart';
 import 'package:get_to_know/models/album.dart';

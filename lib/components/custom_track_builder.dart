@@ -5,6 +5,7 @@ import 'package:get_to_know/locator.dart';
 import 'package:get_to_know/models/album.dart';
 import 'package:get_to_know/models/track.dart';
 
+// ignore: must_be_immutable
 class CustomTrackListBuilder extends StatefulWidget {
   CustomTrackListBuilder(
       {Key? key,

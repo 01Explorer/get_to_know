@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Looking For',
       theme: goodLooking,
-      home: NewHome(),
+      home: const NewHome(),
     );
   }
 }

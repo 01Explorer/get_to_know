@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get_to_know/controllers/artist_controller.dart';
 import 'package:get_to_know/controllers/search_controller.dart';
-import 'package:get_to_know/locator.dart';
 
 class InitialSearchFormField extends StatelessWidget {
-  final TextEditingController _searchController = TextEditingController();
-  final ArtistController _artistController = locator.get<ArtistController>();
+  final TextEditingController _textFieldSearchController =
+      TextEditingController();
   final String labelTitle;
   final String hintTitle;
-  final SearchController controller;
+  final SearchController searchController;
 
   InitialSearchFormField(this.labelTitle, this.hintTitle,
-      {super.key, required this.controller});
+      {super.key, required this.searchController});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +32,11 @@ class InitialSearchFormField extends StatelessWidget {
         }
         return null;
       },
-      controller: _searchController,
+      controller: _textFieldSearchController,
       onFieldSubmitted: (value) {
         if (value.isNotEmpty) {
-          _searchController.text = value.trim();
-          controller.setSearch(_searchController.text);
+          _textFieldSearchController.text = value.trim();
+          searchController.setSearch(_textFieldSearchController.text);
           // _artistController.setArtistName(_searchController.text);
         }
       },

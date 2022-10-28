@@ -27,7 +27,7 @@ class TopTracksScreen extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: StandardBottomBar(),
+      bottomNavigationBar: const StandardBottomBar(),
     );
   }
 }

@@ -21,17 +21,14 @@ class ArtistScreen extends StatefulWidget {
 }
 
 class _ArtistScreenState extends State<ArtistScreen> {
-  final ArtistsScreenController _controller =
+  final ArtistsScreenController _artistScreenController =
       locator.get<ArtistsScreenController>();
   @override
   void initState() {
     super.initState();
 
-    _controller.viewAll = false;
-    _controller.setArtist(widget.selectedArtist);
-    // _controller.addListener(() {
-    //   setState(() {});
-    // });
+    _artistScreenController.viewAll = false;
+    _artistScreenController.setArtist(widget.selectedArtist);
   }
 
   @override
@@ -46,31 +43,33 @@ class _ArtistScreenState extends State<ArtistScreen> {
             children: [
               ArtistImageSection(selectedArtist: widget.selectedArtist),
               const ArtistOptionsListBuilder(),
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (context, _) {
-                  return returnBuild();
-                },
+              Expanded(
+                child: AnimatedBuilder(
+                  animation: _artistScreenController,
+                  builder: (context, _) {
+                    return buildListViewBasedOnOption();
+                  },
+                ),
               ),
             ],
           )
         ],
       ),
-      bottomNavigationBar: StandardBottomBar(),
+      bottomNavigationBar: const StandardBottomBar(),
     );
   }
 
-  Widget returnBuild() {
-    if (_controller.tapped == 0) {
-      return TopTracksSection(selectedArtist: _controller.artist);
+  Widget buildListViewBasedOnOption() {
+    if (_artistScreenController.tapped == 0) {
+      return TopTracksSection(selectedArtist: _artistScreenController.artist);
     }
-    if (_controller.tapped == 1) {
-      return AlbumListViewBuilder(artist: _controller.artist);
+    if (_artistScreenController.tapped == 1) {
+      return AlbumListViewBuilder(artist: _artistScreenController.artist);
     }
-    if (_controller.tapped == 2) {
+    if (_artistScreenController.tapped == 2) {
       return RelatedArtistsListViewBuilder(
-          artistId: _controller.artist.spotifyId!);
+          artistId: _artistScreenController.artist.spotifyId!);
     }
-    return Loading();
+    return const Loading();
   }
 }

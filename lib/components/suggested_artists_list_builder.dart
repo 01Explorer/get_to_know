@@ -15,11 +15,11 @@ class SuggestedArtistsListBuilder extends StatefulWidget {
 
 class _SuggestedArtistsListBuilderState
     extends State<SuggestedArtistsListBuilder> {
-  final HomeController _controller = locator.get<HomeController>();
+  final HomeController _homeController = locator.get<HomeController>();
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
+    _homeController.addListener(() {
       setState(() {});
     });
   }
@@ -28,10 +28,10 @@ class _SuggestedArtistsListBuilderState
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: _controller.itemsArtists.length,
+      itemCount: _homeController.itemsArtists.length,
       itemBuilder: (BuildContext context, int index) {
         return SuggestedArtistsItemBuilder(
-          controller: _controller,
+          controller: _homeController,
           index: index,
         );
       },

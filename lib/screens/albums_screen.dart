@@ -15,6 +15,8 @@ import 'package:get_to_know/controllers/artist_controller.dart';
 class AlbumsScreen extends StatelessWidget {
   final ArtistController _clientArtist = locator.get<ArtistController>();
   final SearchWebClient _clientSearch = locator.get<SearchWebClient>();
+
+  AlbumsScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

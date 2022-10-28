@@ -8,6 +8,7 @@ import 'package:get_to_know/http/webclient.dart';
 import 'package:get_to_know/models/album.dart';
 import 'package:get_to_know/models/artist.dart';
 import 'package:get_to_know/models/track.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class SearchWebClient {
@@ -160,6 +161,7 @@ class SearchWebClient {
       LinkedHashMap<String, dynamic> responseTracks) {
     Map<String, dynamic> stringMap = responseTracks.cast<String, dynamic>();
     List<dynamic> tracks = stringMap['tracks'];
+    // ignore: prefer_for_elements_to_map_fromiterable
     Map<Album, Track> mapReturn = Map<Album, Track>.fromIterable(
       tracks,
       key: (element) => Album.fromJson(element['album']),

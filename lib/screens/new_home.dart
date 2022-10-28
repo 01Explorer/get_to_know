@@ -14,14 +14,14 @@ class NewHome extends StatefulWidget {
 }
 
 class _NewHomeState extends State<NewHome> {
-  final HomeController _controller = locator.get<HomeController>();
+  final HomeController _homeController = locator.get<HomeController>();
 
   @override
   void initState() {
     super.initState();
-    if (!_controller.alreadyRead) {
-      _controller.readJson();
-      _controller.alreadyRead = true;
+    if (!_homeController.alreadyRead) {
+      _homeController.readJson();
+      _homeController.alreadyRead = true;
     }
   }
 
@@ -32,18 +32,18 @@ class _NewHomeState extends State<NewHome> {
         child: Padding(
           padding: const EdgeInsets.only(top: 64),
           child: Column(
-            children: [
-              const NewHomeImageSection(
+            children: const [
+              NewHomeImageSection(
                 imagePath: 'assets/images/featured.png',
                 title: 'Featured',
               ),
-              const NewReleasesSection(title: 'New Releases'),
+              NewReleasesSection(title: 'New Releases'),
               SuggestedArtistsSection(),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: StandardBottomBar(),
+      bottomNavigationBar: const StandardBottomBar(),
     );
   }
 }

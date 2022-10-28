@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_to_know/components/background_image.dart';
 import 'package:get_to_know/components/custom_track_builder.dart';
 import 'package:get_to_know/components/sections/album_image_section.dart';
-import 'package:get_to_know/components/sections/artist_image_section.dart';
 import 'package:get_to_know/components/standard_bottom_bar.dart';
 import 'package:get_to_know/controllers/track_controller.dart';
 import 'package:get_to_know/locator.dart';
@@ -22,7 +21,7 @@ class _TracksScreenState extends State<TracksScreen> {
   String searchString = '';
   @override
   Widget build(BuildContext context) {
-    final TrackController _trackController = locator.get<TrackController>();
+    final TrackController trackController = locator.get<TrackController>();
     return Scaffold(
       body: Stack(
         children: [
@@ -57,7 +56,7 @@ class _TracksScreenState extends State<TracksScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: FutureBuilder(
-                    future: _trackController
+                    future: trackController
                         .searchTracks(widget.chosenAlbum.albumId!),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData && snapshot.data != null) {
@@ -77,7 +76,7 @@ class _TracksScreenState extends State<TracksScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: StandardBottomBar(),
+      bottomNavigationBar: const StandardBottomBar(),
     );
   }
 }

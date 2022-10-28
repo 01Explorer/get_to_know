@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get_to_know/components/suggested_artists_list_builder.dart';
 
 class SuggestedArtistsSection extends StatelessWidget {
+  const SuggestedArtistsSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -16,7 +16,7 @@ class SearchOptionsListBuilder extends StatefulWidget {
 class _SearchOptionsListBuilderState extends State<SearchOptionsListBuilder> {
   @override
   Widget build(BuildContext context) {
-    final SearchController _controller = locator.get<SearchController>();
+    final SearchController searchController = locator.get<SearchController>();
     return Column(
       children: [
         SizedBox(
@@ -24,20 +24,20 @@ class _SearchOptionsListBuilderState extends State<SearchOptionsListBuilder> {
           height: 40,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: _controller.options.length,
+            itemCount: searchController.options.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 80),
                 child: TextButton(
                   onPressed: () {
                     setState(() {
-                      _controller.setTapped(index);
+                      searchController.setTapped(index);
                     });
                   },
                   child: Text(
-                    _controller.options[index],
+                    searchController.options[index],
                     style: TextStyle(
-                      color: _controller.tapped == index
+                      color: searchController.tapped == index
                           ? Colors.white
                           : ThemeColors.alternativeFontColor,
                       fontSize: 16,

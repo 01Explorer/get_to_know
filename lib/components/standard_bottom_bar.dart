@@ -37,7 +37,7 @@ class _StandardBottomBarState extends State<StandardBottomBar> {
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SearchScreen(),
+                  builder: (context) => const SearchScreen(),
                 ),
                 (route) => false);
             break;

@@ -14,7 +14,7 @@ class ArtistOptionsListBuilder extends StatefulWidget {
 }
 
 class _ArtistOptionsListBuilderState extends State<ArtistOptionsListBuilder> {
-  final ArtistsScreenController _controller =
+  final ArtistsScreenController _artistScreenController =
       locator.get<ArtistsScreenController>();
 
   @override
@@ -30,20 +30,20 @@ class _ArtistOptionsListBuilderState extends State<ArtistOptionsListBuilder> {
             height: 40,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: _controller.options.length,
+              itemCount: _artistScreenController.options.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 30),
                   child: TextButton(
                     onPressed: () {
-                      _controller.setTapped(index);
+                      _artistScreenController.setTapOnArtistOptions(index);
                     },
                     child: AnimatedBuilder(
                       builder: (context, _) {
                         return Text(
-                          _controller.options[index],
+                          _artistScreenController.options[index],
                           style: TextStyle(
-                            color: _controller.tapped == index
+                            color: _artistScreenController.tapped == index
                                 ? Colors.white
                                 : ThemeColors.alternativeFontColor,
                             fontSize: 16,
@@ -51,7 +51,7 @@ class _ArtistOptionsListBuilderState extends State<ArtistOptionsListBuilder> {
                           ),
                         );
                       },
-                      animation: _controller,
+                      animation: _artistScreenController,
                     ),
                   ),
                 );

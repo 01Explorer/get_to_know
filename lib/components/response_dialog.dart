@@ -7,7 +7,8 @@ class ResponseDialog extends StatelessWidget {
   final IconData? icon;
   final Color colorIcon;
 
-  ResponseDialog({
+  const ResponseDialog({
+    super.key,
     this.title = "",
     this.message = "",
     this.icon,
@@ -70,6 +71,7 @@ class FailureDialog extends StatelessWidget {
 
   const FailureDialog(
     this.message, {
+    super.key,
     this.title = 'Failure',
     this.icon = Icons.warning,
   });

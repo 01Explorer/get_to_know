@@ -8,10 +8,10 @@ class SuggestedArtistsItemBuilder extends StatelessWidget {
     Key? key,
     required HomeController controller,
     required this.index,
-  })  : _controller = controller,
+  })  : _homeController = controller,
         super(key: key);
 
-  final HomeController _controller;
+  final HomeController _homeController;
   final int index;
 
   @override
@@ -22,8 +22,8 @@ class SuggestedArtistsItemBuilder extends StatelessWidget {
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                ArtistScreen(selectedArtist: _controller.itemsArtists[index]),
+            builder: (context) => ArtistScreen(
+                selectedArtist: _homeController.itemsArtists[index]),
           ),
         ),
         child: SizedBox(
@@ -41,7 +41,7 @@ class SuggestedArtistsItemBuilder extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           image: NetworkImage(
-                              _controller.itemsArtists[index].imagePath!),
+                              _homeController.itemsArtists[index].imagePath!),
                         ),
                       ),
                     ),
@@ -69,7 +69,7 @@ class SuggestedArtistsItemBuilder extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Text(
-                  _controller.itemsArtists[index].name!,
+                  _homeController.itemsArtists[index].name!,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
