@@ -1,6 +1,9 @@
 import 'dart:collection';
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:get_to_know/components/response_dialog.dart';
 import 'package:get_to_know/http/webclient.dart';
 import 'package:get_to_know/models/album.dart';
 import 'package:get_to_know/models/artist.dart';
@@ -9,17 +12,46 @@ import 'package:http/http.dart' as http;
 
 class SearchWebClient {
   String? accessToken;
-  // String? artistId;
   List? albums;
 
   Future<void> getToken() async {
     accessToken = await getAccess();
   }
 
+  void showFailureMessage(BuildContext context,
+      {String message = 'Unknown error'}) {
+    showDialog(
+        context: context,
+        builder: (contextDialog) {
+          return FailureDialog(message);
+        });
+  }
+
   static Future<SearchWebClient> createAsync() async {
     SearchWebClient search = SearchWebClient();
     search.accessToken = await getAccess();
     return search;
+  }
+
+  Future generalSearch(String? searchTerm, String? type) async {
+    // Get Artist Info
+    final http.Response responseId = await client.get(
+      searchUrl,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {'q': searchTerm, 'type': type},
+    );
+    switch (type) {
+      case 'artist':
+        return parseArtistsResponse(jsonDecode(responseId.body)['artists']);
+      case 'track':
+        return parseTracksResponse(jsonDecode(responseId.body)['tracks']);
+      case 'album':
+        return parseAlbumResponse(jsonDecode(responseId.body)['albums']);
+      default:
+    }
   }
 
   Future<Artist> lookForArtistInfo(String? searchTerm) async {
@@ -33,6 +65,18 @@ class SearchWebClient {
       params: {'q': searchTerm, 'type': 'artist'},
     );
     return Artist.fromJson(jsonDecode(responseId.body));
+  }
+
+  Future<List<Artist>> lookForArtistRelated(String? artistId) async {
+    // Get Artist Info
+    final http.Response responseArtist = await client.get(
+      setArtistRelated(artistId),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+    );
+    return parseArtistsRelatedResponse(jsonDecode(responseArtist.body));
   }
 
   Future<List<Album>> lookForAlbums(String? artistId) async {
@@ -66,7 +110,10 @@ class SearchWebClient {
     }, params: {
       'market': 'BR',
     });
-    return parseArtistTopTracksResponse(jsonDecode(responseTracks.body));
+    if (responseTracks.statusCode == 200) {
+      return parseArtistTopTracksResponse(jsonDecode(responseTracks.body));
+    }
+    throw const HttpException('Authentication Failed');
   }
 
   Uri setArtistUrl(String? artistId) {
@@ -78,6 +125,12 @@ class SearchWebClient {
   Uri setArtistTopTracksUrl(String? artistId) {
     String initial = artistUrl.toString();
     String newUrl = '$initial/$artistId/top-tracks/';
+    return Uri.parse(newUrl);
+  }
+
+  Uri setArtistRelated(String? artistId) {
+    String initial = artistUrl.toString();
+    String newUrl = '$initial/$artistId/related-artists/';
     return Uri.parse(newUrl);
   }
 
@@ -112,7 +165,6 @@ class SearchWebClient {
       key: (element) => Album.fromJson(element['album']),
       value: (element) => Track.fromJson(element, getTrackArtists(element)),
     );
-    print(mapReturn.toString());
     return mapReturn;
   }
 
@@ -120,6 +172,12 @@ class SearchWebClient {
       LinkedHashMap<String, dynamic> responseTracks) {
     Map<String, dynamic> stringMap = responseTracks.cast<String, dynamic>();
     List<dynamic> artists = stringMap['items'];
+    return artists.map((dynamic json) => Artist.fromLocalJson(json)).toList();
+  }
+
+  List<Artist> parseArtistsRelatedResponse(
+      Map<String, dynamic> responseTracks) {
+    List<dynamic> artists = responseTracks['artists'];
     return artists.map((dynamic json) => Artist.fromLocalJson(json)).toList();
   }
 
