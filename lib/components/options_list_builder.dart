@@ -36,19 +36,22 @@ class _ArtistOptionsListBuilderState extends State<ArtistOptionsListBuilder> {
                   padding: const EdgeInsets.only(right: 30),
                   child: TextButton(
                     onPressed: () {
-                      setState(() {
-                        _controller.tapped = index;
-                      });
+                      _controller.setTapped(index);
                     },
-                    child: Text(
-                      _controller.options[index],
-                      style: TextStyle(
-                        color: _controller.tapped == index
-                            ? Colors.white
-                            : ThemeColors.alternativeFontColor,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    child: AnimatedBuilder(
+                      builder: (context, _) {
+                        return Text(
+                          _controller.options[index],
+                          style: TextStyle(
+                            color: _controller.tapped == index
+                                ? Colors.white
+                                : ThemeColors.alternativeFontColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        );
+                      },
+                      animation: _controller,
                     ),
                   ),
                 );

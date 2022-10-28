@@ -20,7 +20,9 @@ class TopTracksScreen extends StatelessWidget {
           Column(
             children: [
               ArtistImageSection(selectedArtist: artist),
-              Expanded(child: TopTracksFutureBuilder(selectedArtist: artist))
+              Expanded(
+                child: TopTracksFutureBuilder(selectedArtist: artist),
+              )
             ],
           )
         ],
