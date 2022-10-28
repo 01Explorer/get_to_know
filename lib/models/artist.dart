@@ -27,6 +27,17 @@ class Artist {
   }
 
   factory Artist.fromLocalJson(Map<String, dynamic> response) {
+    try {
+      response['images'][0]['url'];
+    } catch (e) {
+      return Artist(
+        name: response['name'],
+        spotifyId: response['id'],
+        followers: response['followers']['total'],
+        genres: response['genres'],
+        popularity: response['popularity'],
+      );
+    }
     return Artist(
       name: response['name'],
       spotifyId: response['id'],
