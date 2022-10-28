@@ -70,9 +70,17 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: _searchController.toBeBuilt.length,
+                  itemCount: _searchController.toBeBuilt.isEmpty
+                      ? 1
+                      : _searchController.toBeBuilt.length,
                   itemBuilder: (BuildContext context, int index) {
                     final building = _searchController.toBeBuilt;
+                    if (building.isEmpty) {
+                      return const Expanded(
+                          child: Center(
+                        child: Text('We didn\'t find anything'),
+                      ));
+                    }
                     switch (building.runtimeType) {
                       case List<Artist>:
                         return InkWell(
