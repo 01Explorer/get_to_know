@@ -10,6 +10,12 @@ import 'package:get_to_know/models/artist.dart';
 class HomeController extends ChangeNotifier {
   List<Album> itemsMusics = [];
   List<Artist> itemsArtists = [];
+  bool alreadyRead = false;
+  int bottomBarindex = 0;
+
+  void setIndex(int value) {
+    bottomBarindex = value;
+  }
 
   Future<void> readJson() async {
     final getInst = locator.get<SearchWebClient>();
