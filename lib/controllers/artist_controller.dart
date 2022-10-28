@@ -12,6 +12,12 @@ class ArtistController extends ChangeNotifier {
     return artist;
   }
 
+  Future<List<Artist>?> searchRelatedArtists(String? artistId) async {
+    final List<Artist> artistAlbums =
+        await locator.get<SearchWebClient>().lookForArtistRelated(artistId);
+    return artistAlbums;
+  }
+
   setArtistName(String text) {
     artistName = text;
   }

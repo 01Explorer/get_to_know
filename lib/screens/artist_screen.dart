@@ -18,24 +18,37 @@ class ArtistScreen extends StatefulWidget {
 }
 
 class _ArtistScreenState extends State<ArtistScreen> {
+  final ArtistsScreenController _controller =
+      locator.get<ArtistsScreenController>();
+  @override
+  void initState() {
+    super.initState();
+
+    _controller.viewAll = false;
+    _controller.setArtist(widget.selectedArtist);
+    _controller.addListener(() {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           BackgroundImage(
-            selectedArtist: widget.selectedArtist,
+            imagePath: widget.selectedArtist.imagePath!,
           ),
           Column(
             children: [
               ArtistImageSection(selectedArtist: widget.selectedArtist),
-              const OptionsListBuilder(),
-              TopTracksSection(selectedArtist: widget.selectedArtist)
+              const ArtistOptionsListBuilder(),
+              _controller.returnBuild(),
             ],
           )
         ],
       ),
-      bottomNavigationBar: const StandardBottomBar(),
+      bottomNavigationBar: StandardBottomBar(),
     );
   }
 }

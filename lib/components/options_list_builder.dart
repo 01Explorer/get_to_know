@@ -3,18 +3,22 @@ import 'package:get_to_know/controllers/artists_screen_controller.dart';
 import 'package:get_to_know/locator.dart';
 import 'package:get_to_know/themes/theme_colors.dart';
 
-class OptionsListBuilder extends StatefulWidget {
-  const OptionsListBuilder({super.key});
+class ArtistOptionsListBuilder extends StatefulWidget {
+  const ArtistOptionsListBuilder({
+    super.key,
+  });
 
   @override
-  State<OptionsListBuilder> createState() => _OptionsListBuilderState();
+  State<ArtistOptionsListBuilder> createState() =>
+      _ArtistOptionsListBuilderState();
 }
 
-class _OptionsListBuilderState extends State<OptionsListBuilder> {
+class _ArtistOptionsListBuilderState extends State<ArtistOptionsListBuilder> {
+  final ArtistsScreenController _controller =
+      locator.get<ArtistsScreenController>();
+
   @override
   Widget build(BuildContext context) {
-    final ArtistsScreenController _controller =
-        locator.get<ArtistsScreenController>();
     return Column(
       children: [
         Padding(
@@ -28,20 +32,23 @@ class _OptionsListBuilderState extends State<OptionsListBuilder> {
               scrollDirection: Axis.horizontal,
               itemCount: _controller.options.length,
               itemBuilder: (BuildContext context, int index) {
-                return TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _controller.tapped = index;
-                    });
-                  },
-                  child: Text(
-                    _controller.options[index],
-                    style: TextStyle(
-                      color: _controller.tapped == index
-                          ? Colors.white
-                          : ThemeColors.alternativeFontColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                return Padding(
+                  padding: const EdgeInsets.only(right: 30),
+                  child: TextButton(
+                    onPressed: () {
+                      setState(() {
+                        _controller.tapped = index;
+                      });
+                    },
+                    child: Text(
+                      _controller.options[index],
+                      style: TextStyle(
+                        color: _controller.tapped == index
+                            ? Colors.white
+                            : ThemeColors.alternativeFontColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 );

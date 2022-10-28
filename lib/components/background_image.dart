@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get_to_know/models/artist.dart';
 
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({
     Key? key,
-    required this.selectedArtist,
+    required this.imagePath,
   }) : super(key: key);
 
-  final Artist selectedArtist;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class BackgroundImage extends StatelessWidget {
       },
       blendMode: BlendMode.dstOut,
       child: Image.network(
-        selectedArtist.imagePath!,
+        imagePath,
       ),
     );
   }
