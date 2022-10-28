@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_to_know/components/top_tracks_future_builder.dart';
+import 'package:get_to_know/controllers/artists_screen_controller.dart';
+import 'package:get_to_know/locator.dart';
 import 'package:get_to_know/models/artist.dart';
-import 'package:get_to_know/screens/artist_screen.dart';
+import 'package:get_to_know/screens/top_tracks_screen.dart';
 
 class TopTracksSection extends StatefulWidget {
   final Artist selectedArtist;
@@ -19,7 +21,7 @@ class _TopTracksSectionState extends State<TopTracksSection> {
         Padding(
           padding: const EdgeInsets.only(left: 16),
           child: SizedBox(
-            height: 300,
+            height: 320,
             child: TopTracksFutureBuilder(
               selectedArtist: widget.selectedArtist,
             ),
@@ -30,7 +32,15 @@ class _TopTracksSectionState extends State<TopTracksSection> {
           child: Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                locator.get<ArtistsScreenController>().viewAll = true;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          TopTracksScreen(artist: widget.selectedArtist),
+                    ));
+              },
               child: Text(
                 'View All',
                 style: Theme.of(context).textTheme.bodySmall,
