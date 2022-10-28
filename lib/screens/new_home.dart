@@ -6,14 +6,27 @@ import 'package:get_to_know/components/standard_bottom_bar.dart';
 import 'package:get_to_know/controllers/home_controller.dart';
 import 'package:get_to_know/locator.dart';
 
-class NewHome extends StatelessWidget {
-  NewHome({Key? key}) : super(key: key);
+class NewHome extends StatefulWidget {
+  const NewHome({Key? key}) : super(key: key);
 
+  @override
+  State<NewHome> createState() => _NewHomeState();
+}
+
+class _NewHomeState extends State<NewHome> {
   final HomeController _controller = locator.get<HomeController>();
 
   @override
+  void initState() {
+    super.initState();
+    if (!_controller.alreadyRead) {
+      _controller.readJson();
+      _controller.alreadyRead = true;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    _controller.readJson();
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -30,7 +43,7 @@ class NewHome extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const StandardBottomBar(),
+      bottomNavigationBar: StandardBottomBar(),
     );
   }
 }
