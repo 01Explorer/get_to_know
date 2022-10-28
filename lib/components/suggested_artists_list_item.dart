@@ -42,6 +42,8 @@ class SuggestedArtistsItemBuilder extends StatelessWidget {
                         image: DecorationImage(
                           image: NetworkImage(
                               _homeController.itemsArtists[index].imagePath!),
+                          onError: (exception, stackTrace) => const AssetImage(
+                              'assets/images/standard_disc.png'),
                         ),
                       ),
                     ),
