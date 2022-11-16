@@ -1,4 +1,4 @@
-# Get To Know
+# Get To Know 🎵🎶
 
 Get to know is a project which was based in the third Sprint Challenge from the Compass.Uol Flutter journey. In this specific sprint our goal was to develop a solution/application using an API to consume and see Data. Hence, Get to know was developed aiming to allow users to search and see their favorite artists, musics and albums based on Spotify Open API. 
 
